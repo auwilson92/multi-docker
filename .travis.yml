@@ -16,3 +16,7 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
   # Take those images and push them to docker hub
+  - docker push wilsonau/multi-client
+  - docker push wilsonau/multi-nginx
+  - docker push wilsonau/multi-server
+  - docker push wilsonau/multi-worker
