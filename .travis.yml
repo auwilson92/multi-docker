@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t wilsonau/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t auwilson92/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true wilsonau/react-test npm test
+  - docker run -e CI=true auwilson92/react-test npm test
 
 after_success:
-  - docker build -t wilsonau/multi-client ./client
-  - docker build -t wilsonau/multi-nginx ./nginx
-  - docker build -t wilsonau/multi-server ./server
-  - docker build -t wilsonau/multi-worker ./worker
+  - docker build -t auwilson92/multi-client ./client
+  - docker build -t auwilson92/multi-nginx ./nginx
+  - docker build -t auwilson92/multi-server ./server
+  - docker build -t auwilson92/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
   # Take those images and push them to docker hub
-  - docker push wilsonau/multi-client
-  - docker push wilsonau/multi-nginx
-  - docker push wilsonau/multi-server
-  - docker push wilsonau/multi-worker
+  - docker push auwilson92/multi-client
+  - docker push auwilson92/multi-nginx
+  - docker push auwilson92/multi-server
+  - docker push auwilson92/multi-worker
